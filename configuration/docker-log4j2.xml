@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <appenders>
+    <console name="outbrainLog">
+      <ObJsonLayout compact="true" eventEol="true" locationInfo="true" />
+    </console>
+
+    <rewrite name="monitoredOutbrainLog">
+      <appenderRef ref="outbrainLog"/>
+      <logMonitoringPolicy id="outbrainLog"/>
+    </rewrite>
+  </appenders>
+
+  <loggers>
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="com.outbrain" level="INFO"/>
+
+    <root level="WARN">
+      <appenderRef ref="monitoredOutbrainLog"/>
+    </root>
+  </loggers>
+</configuration>

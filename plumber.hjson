@@ -1,0 +1,51 @@
+{
+    slackChannel: evt-deploy-pipeline
+    slackIcon: carousel_horse
+    pollScm: true
+//    simulatorProject: BootCampOmlevi_Simulator
+
+//    stages: [
+//    {
+//        name: Test Environments
+//        parallel: [
+//        {
+//            name: Dev
+//            deploymentEnv: dev
+//        }
+//        {
+//            name: Test
+//            deploymentEnv: test
+//        }
+//        {
+//            name: Simulator
+//            deploymentEnv: simulator
+//            delaySec: 10
+//            tcBuild: BootCampOmlevi_Simulator
+//        }
+//        ]
+//    }
+//    ]
+//    productionStages: [
+//    {
+//        name: Deploy to Prod
+//        deploymentEnv: prod
+//        requiresApproval: true
+//    }
+//    {
+//        type: Validate
+//        name: Validate Prod
+//        delaySec: 10
+//        deploymentEnv: prod
+//        requiresApproval: true
+//        metrics: [
+//        {
+//            query: 'log_events{exported_servicename="BootCampOmlevi", level="WARN"}'
+//            predicate: GREATER_THAN
+//            threshold: 4
+//            errorMessage: High error count
+//        }
+//        ]
+//
+//    }
+//    ]
+}

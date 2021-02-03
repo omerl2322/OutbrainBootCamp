@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+  <import resource="classpath:com/outbrain/ob1k/applicationContext-rpc-all.xml"/>
+  <import resource="classpath:com/outbrain/ob1k/applicationContext-rpc-ops.xml"/>
+
+  <bean id="helpLinks" class="org.springframework.beans.factory.config.ListFactoryBean">
+    <property name="sourceList">
+      <list merge="true">
+        <!--
+        A sample help link
+        <bean class="com.outbrain.webapps.help.HelpLinkFactoryBean" p:group-ref="APP_SPECIFIC_APIS" p:name="echo"
+              p:url="api/echo?name='BootCampOmlevi'" p:description='Invoke the echo service'/>
+        -->
+      </list>
+    </property>
+  </bean>
+
+  <util:list id="selfTestBeans" value-type="com.outbrain.selftest.SelfTestCase">
+    <ref bean="propertiesSelfTest"/>
+    <ref bean="validContextSelfTest"/>
+
+    <!-- A sample URL self test -->
+
+        <bean id="replaceMe" class="com.outbrain.selftest.UrlSelfTest">
+          <constructor-arg name="uri" value="api/echo?name='BootCampOmlevi'"/>
+          <constructor-arg name="port" value="${com.outbrain.application.httpPort}"/>
+        </bean>
+
+  </util:list>
+</beans>

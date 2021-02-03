@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+  <import resource="classpath:com/outbrain/ob1k/applicationContext-rpc-serviceContext.xml"/>
+  <import resource="classpath:com/outbrain/ob1k/applicationContext-rpc-filters.xml"/>
+
+  <!--  A sample service bean -->
+  <bean id="proxyOtherServer" class="com.outbrain.callmeclient.CallMeProxy"/>
+  <bean id="proxyOtherServerDummy" class="com.outbrain.BootCampOmlevi.CallMeProxyDummy"/>
+
+  <bean id="cachedClicks" class="com.outbrain.ob1k.cache.LocalAsyncCache"/>
+
+  <alias name="${UseCallMeProxy}" alias="callMeProxy"/>
+
+  <bean class="com.outbrain.BootCampOmlevi.service.BootCampOmleviService">
+    <constructor-arg name="greetingMessage" ref="greetingMessage"/>
+    <constructor-arg name="callMeServiceProxy" ref="callMeProxy"/>
+    <constructor-arg name="cachedClicks" ref="cachedClicks"/>
+    <constructor-arg name="metricFactory" ref="metricFactory"/>
+  </bean>
+
+</beans>
+

@@ -1,0 +1,18 @@
+BootCampOmlevi:
+  [all]:
+    BootCampOmlevi.propName: defaultPropValue
+    UseCallMeProxy: proxyOtherServer
+  [prod]:
+    BootCampOmlevi.propName: propValueForProd
+    # if you need passwords - please do not add them in plaintext. Please refer to
+    # https://sites.google.com/a/outbrain.com/wiki/Home/devops/sensitive-configuration-encryption
+    # my.secret.password=ENC(bzQFMa05wdfY4g0tdxwf+X0cvJZHk3+mpijRuBvkSMk=)
+  [junit]:
+    BootCampOmlevi.propName: propValueForTests
+    UseCallMeProxy: proxyOtherServerDummy
+  [dev]:
+    BootCampOmlevi.propName: propValueForDev
+  [ny]:
+    some.threshold: 2.0
+  [ny, sample]:
+    some.threshold: 5.0

@@ -1,0 +1,104 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.outbrain.devx.services</groupId>
+    <artifactId>devx-internals</artifactId>
+    <version>trunk</version>
+  </parent>
+
+  <artifactId>BootCampOmlevi</artifactId>
+
+  <properties>
+    <ob1k.main.class>com.outbrain.BootCampOmlevi.BootCampOmleviServer</ob1k.main.class>
+  </properties>
+
+  <!--
+  IMPORTANT: These dependencies need to exist in the service's pom (devx-internals)
+  with the versions as properties, inside the dependency management section
+  -->
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>${swinfra.groupId}</groupId>
+      <artifactId>RPCLib</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>${swinfra.groupId}</groupId>
+      <artifactId>RPCLib</artifactId>
+      <type>test-jar</type>
+    </dependency>
+
+    <dependency>
+      <groupId>${swinfra.groupId}</groupId>
+      <artifactId>CallMeClient</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>${swinfra.groupId}</groupId>
+      <artifactId>ClientRPCLib</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>${swinfra.groupId}</groupId>
+      <artifactId>ObEventLib</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>${swinfra.groupId}</groupId>
+      <artifactId>ConfigLibBase</artifactId>
+      <type>test-jar</type>
+    </dependency>
+      <dependency>
+          <groupId>com.outbrain.devx.services</groupId>
+          <artifactId>BootCampOmleviClient</artifactId>
+          <version>trunk</version>
+          <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>com.outbrain.devx.services</groupId>
+          <artifactId>BootCampOmleviClient</artifactId>
+          <version>trunk</version>
+          <scope>compile</scope>
+      </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <!-- Used for creating docker containers in profile releasez START-->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>buildnumber-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>io.fabric8</groupId>
+        <artifactId>docker-maven-plugin</artifactId>
+      </plugin>
+      <!-- Used for creating docker containers in profile releasez END-->
+    </plugins>
+  </build>
+</project>
